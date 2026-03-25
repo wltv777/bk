@@ -1,0 +1,1139 @@
+.elementor-3032 .elementor-element.elementor-element-2b3fab78 {
+    --display: flex;
+    --min-height: 100vh;
+    --flex-direction: column;
+    --container-widget-width: 100%;
+    --container-widget-height: initial;
+    --container-widget-flex-grow: 0;
+    --container-widget-align-self: initial;
+    --justify-content: center;
+    --background-transition: 0.3s;
+    --overlay-opacity: 0.62;
+    --overlay-mix-blend-mode: luminosity;
+    --margin-block-start: 0px;
+    --margin-block-end: 0px;
+    --margin-inline-start: 0px;
+    --margin-inline-end: 0px;
+    --padding-block-start: 30px;
+    --padding-block-end: 30px;
+    --padding-inline-start: 0px;
+    --padding-inline-end: 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2b3fab78:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-2b3fab78>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: transparent;
+    background-image: linear-gradient(163deg, #000000 0%, #000000 100%);
+}
+
+.elementor-3032 .elementor-element.elementor-element-2b3fab78::before,
+.elementor-3032 .elementor-element.elementor-element-2b3fab78>.elementor-background-video-container::before,
+.elementor-3032 .elementor-element.elementor-element-2b3fab78>.e-con-inner>.elementor-background-video-container::before,
+.elementor-3032 .elementor-element.elementor-element-2b3fab78>.elementor-background-slideshow::before,
+.elementor-3032 .elementor-element.elementor-element-2b3fab78>.e-con-inner>.elementor-background-slideshow::before,
+.elementor-3032 .elementor-element.elementor-element-2b3fab78>.elementor-motion-effects-container>.elementor-motion-effects-layer::before {
+    --background-overlay: '';
+    background-image: url("https://appgebe.com/wp-content/uploads/2023/10/FUNDO-1.jpg");
+    background-position: bottom center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2b3fab78,
+.elementor-3032 .elementor-element.elementor-element-2b3fab78::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3179afd3 {
+    --display: flex;
+    --background-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-4761b4e0 img {
+    width: 30%;
+    filter: brightness( 115%) contrast( 100%) saturate( 120%) blur( 0px) hue-rotate( 0deg);
+}
+
+.elementor-3032 .elementor-element.elementor-element-4761b4e0>.elementor-widget-container {
+    margin: -110px 0px -120px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3cdafcb7 {
+    text-align: center;
+    width: var( --container-widget-width, 68%);
+    max-width: 68%;
+    --container-widget-width: 68%;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3cdafcb7 .elementor-heading-title {
+    color: #FFFFFF;
+    font-family: "Poppins", Sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3cdafcb7.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-12c280b3 {
+    text-align: center;
+    color: #FFFFFF;
+    font-family: "Poppins", Sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.elementor-3032 .elementor-element.elementor-element-12c280b3>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-1b98a432 {
+    --display: flex;
+    --background-transition: 0.3s;
+    --margin-block-start: -20px;
+    --margin-block-end: 0px;
+    --margin-inline-start: 0px;
+    --margin-inline-end: 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-1170b9fb {
+    --display: flex;
+    --flex-direction: row;
+    --container-widget-width: initial;
+    --container-widget-height: 100%;
+    --container-widget-flex-grow: 1;
+    --container-widget-align-self: stretch;
+    --background-transition: 0.3s;
+    --padding-block-start: 0px;
+    --padding-block-end: 0px;
+    --padding-inline-start: 100px;
+    --padding-inline-end: 100px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-4ff6510 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-4ff6510:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-4ff6510>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-4ff6510,
+.elementor-3032 .elementor-element.elementor-element-4ff6510::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-7c9f9ac2 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-ec12366>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-ec12366 {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-ec12366.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-bdda651 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-bdda651>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-73bd593b {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-73bd593b:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-73bd593b>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-73bd593b,
+.elementor-3032 .elementor-element.elementor-element-73bd593b::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-25f67b9d img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-210b4bda>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-210b4bda {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-210b4bda.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-484cb850 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-484cb850>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-1356aaa0 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-1356aaa0:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-1356aaa0>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-1356aaa0,
+.elementor-3032 .elementor-element.elementor-element-1356aaa0::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2bf30865 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-35dbb4f>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-35dbb4f {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-35dbb4f.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-318a4c56 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-318a4c56>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2cfe2014 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2cfe2014:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-2cfe2014>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2cfe2014,
+.elementor-3032 .elementor-element.elementor-element-2cfe2014::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2d5c79d9 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-38220c3b>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-38220c3b {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-38220c3b.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-144ec56a .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-144ec56a>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-57b8b43f {
+    --display: flex;
+    --flex-direction: row;
+    --container-widget-width: initial;
+    --container-widget-height: 100%;
+    --container-widget-flex-grow: 1;
+    --container-widget-align-self: stretch;
+    --background-transition: 0.3s;
+    --padding-block-start: 0px;
+    --padding-block-end: 0px;
+    --padding-inline-start: 100px;
+    --padding-inline-end: 100px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-651374d6 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-651374d6:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-651374d6>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-651374d6,
+.elementor-3032 .elementor-element.elementor-element-651374d6::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-37333b7d img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-63b3eb64>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-63b3eb64 {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-63b3eb64.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-5a5fd0b4 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-5a5fd0b4>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-4ac4fcf6 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-4ac4fcf6:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-4ac4fcf6>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-4ac4fcf6,
+.elementor-3032 .elementor-element.elementor-element-4ac4fcf6::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-783c854a img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-17b92f17>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-17b92f17 {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-17b92f17.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-38ca2c41 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-38ca2c41>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-6625668c {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: none;
+    --border-style: none;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-6625668c,
+.elementor-3032 .elementor-element.elementor-element-6625668c::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-7a3be0e0 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: none;
+    --border-style: none;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-7a3be0e0,
+.elementor-3032 .elementor-element.elementor-element-7a3be0e0::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3429a0e {
+    --display: flex;
+    --background-transition: 0.3s;
+    --margin-block-start: -20px;
+    --margin-block-end: 0px;
+    --margin-inline-start: 0px;
+    --margin-inline-end: 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-09b141f {
+    --display: flex;
+    --flex-direction: row;
+    --container-widget-width: initial;
+    --container-widget-height: 100%;
+    --container-widget-flex-grow: 1;
+    --container-widget-align-self: stretch;
+    --background-transition: 0.3s;
+    --padding-block-start: 0px;
+    --padding-block-end: 0px;
+    --padding-inline-start: 100px;
+    --padding-inline-end: 100px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-015c4a7 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-015c4a7:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-015c4a7>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-015c4a7,
+.elementor-3032 .elementor-element.elementor-element-015c4a7::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-4a37d68 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-8fc0798>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-8fc0798 {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-8fc0798.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-fc35ee7 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-fc35ee7>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-d0d83f4 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-d0d83f4:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-d0d83f4>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-d0d83f4,
+.elementor-3032 .elementor-element.elementor-element-d0d83f4::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-ed462f8 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-30cdbe1>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-30cdbe1 {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-30cdbe1.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-fc61444 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-fc61444>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-0802338 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-0802338:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-0802338>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-0802338,
+.elementor-3032 .elementor-element.elementor-element-0802338::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-44f2e16 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-addb4bc>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-addb4bc {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-addb4bc.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2b74238 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2b74238>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-e3dfe42 {
+    --display: flex;
+    --flex-direction: row;
+    --container-widget-width: initial;
+    --container-widget-height: 100%;
+    --container-widget-flex-grow: 1;
+    --container-widget-align-self: stretch;
+    --background-transition: 0.3s;
+    --padding-block-start: 0px;
+    --padding-block-end: 0px;
+    --padding-inline-start: 100px;
+    --padding-inline-end: 100px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-1796a33 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-1796a33:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-1796a33>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-1796a33,
+.elementor-3032 .elementor-element.elementor-element-1796a33::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3ebe479 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3c96062>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3c96062 {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-3c96062.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-dcc365b .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-dcc365b>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-868c462 {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-868c462:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-868c462>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-868c462,
+.elementor-3032 .elementor-element.elementor-element-868c462::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-5cc4b15 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2f10dde>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2f10dde {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-2f10dde.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-a64fc5a .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-a64fc5a>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-9ca18ef {
+    --display: flex;
+    --background-transition: 0.3s;
+    border-style: solid;
+    --border-style: solid;
+    border-width: 1px 1px 1px 1px;
+    --border-block-start-width: 1px;
+    --border-inline-end-width: 1px;
+    --border-block-end-width: 1px;
+    --border-inline-start-width: 1px;
+    border-color: #FFFFFF3D;
+    --border-color: #FFFFFF3D;
+    --border-radius: 8px 8px 8px 8px;
+    --padding-block-start: 20px;
+    --padding-block-end: 20px;
+    --padding-inline-start: 20px;
+    --padding-inline-end: 20px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-9ca18ef:not(.elementor-motion-effects-element-type-background),
+.elementor-3032 .elementor-element.elementor-element-9ca18ef>.elementor-motion-effects-container>.elementor-motion-effects-layer {
+    background-color: #0000009C;
+}
+
+.elementor-3032 .elementor-element.elementor-element-9ca18ef,
+.elementor-3032 .elementor-element.elementor-element-9ca18ef::before {
+    --border-transition: 0.3s;
+}
+
+.elementor-3032 .elementor-element.elementor-element-7dcfd67 img {
+    width: 100%;
+    border-radius: 8px 8px 8px 8px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-e4c4580>.elementor-widget-container {
+    margin: -10px 0px -10px 0px;
+}
+
+.elementor-3032 .elementor-element.elementor-element-e4c4580 {
+    width: var( --container-widget-width, 215px);
+    max-width: 215px;
+    --container-widget-width: 215px;
+    --container-widget-flex-grow: 0;
+}
+
+.elementor-3032 .elementor-element.elementor-element-e4c4580.elementor-element {
+    --align-self: center;
+}
+
+.elementor-3032 .elementor-element.elementor-element-7de5e62 .elementor-button {
+    font-family: "Poppins", Sans-serif;
+    font-weight: 700;
+    background-color: transparent;
+    background-image: linear-gradient(204deg, #00D11D 0%, #1C8300 100%);
+    border-style: solid;
+    border-width: 0px 0px 4px 0px;
+    border-color: #00FF48;
+}
+
+.elementor-3032 .elementor-element.elementor-element-7de5e62>.elementor-widget-container {
+    margin: 0px 0px 0px 0px;
+}
+
+:root {
+    --page-title-display: none;
+}
+
+.elementor-widget .tippy-tooltip .tippy-content {
+    text-align: center;
+}
+
+@media(min-width:768px) {
+    .elementor-3032 .elementor-element.elementor-element-3429a0e {
+        --content-width: 896px;
+    }
+}
+
+@media(max-width:767px) {
+    .elementor-3032 .elementor-element.elementor-element-2b3fab78::before,
+    .elementor-3032 .elementor-element.elementor-element-2b3fab78>.elementor-background-video-container::before,
+    .elementor-3032 .elementor-element.elementor-element-2b3fab78>.e-con-inner>.elementor-background-video-container::before,
+    .elementor-3032 .elementor-element.elementor-element-2b3fab78>.elementor-background-slideshow::before,
+    .elementor-3032 .elementor-element.elementor-element-2b3fab78>.e-con-inner>.elementor-background-slideshow::before,
+    .elementor-3032 .elementor-element.elementor-element-2b3fab78>.elementor-motion-effects-container>.elementor-motion-effects-layer::before {
+        background-position: center center;
+    }
+    .elementor-3032 .elementor-element.elementor-element-2b3fab78 {
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-4761b4e0 img {
+        width: 50%;
+    }
+    .elementor-3032 .elementor-element.elementor-element-4761b4e0>.elementor-widget-container {
+        margin: -70px 0px -70px 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-3cdafcb7 .elementor-heading-title {
+        font-size: 30px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-3cdafcb7 {
+        --container-widget-width: 404px;
+        --container-widget-flex-grow: 0;
+        width: var( --container-widget-width, 404px);
+        max-width: 404px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-12c280b3 {
+        font-size: 16px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-1b98a432 {
+        --gap: 0px 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-1170b9fb {
+        --padding-block-start: 0px;
+        --padding-block-end: 0px;
+        --padding-inline-start: 0px;
+        --padding-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-4ff6510 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-73bd593b {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-1356aaa0 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-2cfe2014 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-57b8b43f {
+        --margin-block-start: 20px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+        --padding-block-start: 0px;
+        --padding-block-end: 0px;
+        --padding-inline-start: 0px;
+        --padding-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-651374d6 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-4ac4fcf6 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-6625668c {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-7a3be0e0 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-3429a0e {
+        --gap: 0px 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-09b141f {
+        --padding-block-start: 0px;
+        --padding-block-end: 0px;
+        --padding-inline-start: 0px;
+        --padding-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-015c4a7 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-d0d83f4 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-0802338 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-e3dfe42 {
+        --margin-block-start: 20px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+        --padding-block-start: 0px;
+        --padding-block-end: 0px;
+        --padding-inline-start: 0px;
+        --padding-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-1796a33 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-868c462 {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+    .elementor-3032 .elementor-element.elementor-element-9ca18ef {
+        --width: 46%;
+        --margin-block-start: 0px;
+        --margin-block-end: 0px;
+        --margin-inline-start: 0px;
+        --margin-inline-end: 0px;
+    }
+}
