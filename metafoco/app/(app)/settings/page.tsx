@@ -9,7 +9,7 @@ import { useUserStore } from '@/store/userStore';
 import { XPBar } from '@/components/gamification/XPBar';
 import { BADGES } from '@/lib/gamification';
 import { getActivityLabel, getGoalLabel } from '@/lib/utils';
-import { LogOut, ChevronRight, Crown, Zap, Shield, Bell } from 'lucide-react';
+import { LogOut, ChevronRight, Crown, Zap, Shield, Bell, CalendarDays } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import toast from 'react-hot-toast';
@@ -106,9 +106,10 @@ export default function SettingsPage() {
         {/* Menu items */}
         <div className="card space-y-1">
           {[
-            { icon: <Crown className="w-4 h-4 text-primary" />, label: 'Assinar Premium', href: '/premium', highlight: !premium.active },
-            { icon: <Bell className="w-4 h-4 text-white/40" />,   label: 'Notificações',   href: '/settings/notifications' },
-            { icon: <Shield className="w-4 h-4 text-white/40" />, label: 'Privacidade',    href: '/settings/privacy' },
+            { icon: <Crown className="w-4 h-4 text-primary" />,        label: 'Assinar Premium',     href: '/premium',    highlight: !premium.active },
+            { icon: <CalendarDays className="w-4 h-4 text-white/40" />, label: 'Planejamento Semanal', href: '/meal-plan',  highlight: false },
+            { icon: <Bell className="w-4 h-4 text-white/40" />,        label: 'Notificações',         href: '/settings/notifications', highlight: false },
+            { icon: <Shield className="w-4 h-4 text-white/40" />,      label: 'Privacidade',          href: '/settings/privacy',       highlight: false },
           ].map(({ icon, label, href, highlight }) => (
             <Link key={href} href={href} className={cn(
               'flex items-center gap-3 py-3 px-2 rounded-xl hover:bg-white/5 transition-colors',

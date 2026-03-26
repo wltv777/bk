@@ -10,9 +10,8 @@ interface XPBarProps {
 }
 
 export function XPBar({ xp, compact = false }: XPBarProps) {
-  const { level, name, nextLevelXP } = getLevelInfo(xp);
-  const prevLevelXP = level > 1 ? getLevelInfo(xp - 1).nextLevelXP : 0;
-  const progress = Math.min(((xp - prevLevelXP) / (nextLevelXP - prevLevelXP)) * 100, 100);
+  const { level, name, currentLevelMin, nextLevelXP } = getLevelInfo(xp);
+  const progress = Math.min(((xp - currentLevelMin) / (nextLevelXP - currentLevelMin)) * 100, 100);
 
   if (compact) {
     return (

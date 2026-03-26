@@ -138,15 +138,17 @@ export function getLevelInfo(xp: number): { level: number; name: string; nextLev
 
   let level = 1;
   let levelName = levels[0].name;
+  let currentLevelMin = 0;
   let nextLevelXP = levels[1].min;
 
   for (let i = 0; i < levels.length; i++) {
     if (xp >= levels[i].min) {
       level = i + 1;
       levelName = levels[i].name;
+      currentLevelMin = levels[i].min;
       nextLevelXP = i + 1 < levels.length ? levels[i + 1].min : levels[i].min + 2000;
     }
   }
 
-  return { level, name: levelName, nextLevelXP };
+  return { level, name: levelName, currentLevelMin, nextLevelXP };
 }

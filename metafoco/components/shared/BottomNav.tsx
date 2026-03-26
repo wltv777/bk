@@ -2,12 +2,13 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, BookOpen, TrendingUp, MessageCircle, User } from 'lucide-react';
+import { Home, BookOpen, TrendingUp, MessageCircle, User, CalendarDays } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navItems = [
   { href: '/dashboard',  icon: Home,           label: 'Home'      },
   { href: '/diary',      icon: BookOpen,       label: 'Diário'    },
+  { href: '/meal-plan',  icon: CalendarDays,   label: 'Plano'     },
   { href: '/progress',   icon: TrendingUp,     label: 'Progresso' },
   { href: '/coach',      icon: MessageCircle,  label: 'Coach'     },
   { href: '/settings',   icon: User,           label: 'Perfil'    },

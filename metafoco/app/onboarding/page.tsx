@@ -47,7 +47,10 @@ export default function OnboardingPage() {
   const router = useRouter();
   const { setProfile, setMetrics } = useUserStore();
   const [step, setStep] = useState(0);
-  const [data, setData] = useState<OnboardingData>(defaultData);
+  const [data, setData] = useState<OnboardingData>({
+    ...defaultData,
+    name: auth.currentUser?.displayName ?? '',
+  });
   const [loading, setLoading] = useState(false);
 
   const progress = ((step + 1) / TOTAL_STEPS) * 100;

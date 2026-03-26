@@ -3,16 +3,17 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, X, Camera, Search, Scan } from 'lucide-react';
+import { Plus, X, Camera, Search, Scan, CalendarDays } from 'lucide-react';
 
 export function FAB() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
   const actions = [
-    { icon: Camera, label: 'Foto IA',     href: '/scanner?mode=camera',  color: 'bg-primary' },
-    { icon: Scan,   label: 'Código barras', href: '/scanner?mode=barcode', color: 'bg-accent' },
-    { icon: Search, label: 'Buscar',      href: '/diary?action=add',     color: 'bg-surface-3' },
+    { icon: Camera,       label: 'Foto IA',      href: '/scanner?mode=camera',  color: 'bg-primary' },
+    { icon: Scan,         label: 'Cód. barras',  href: '/scanner?mode=barcode', color: 'bg-accent' },
+    { icon: Search,       label: 'Buscar',       href: '/diary?action=add',     color: 'bg-surface-3' },
+    { icon: CalendarDays, label: 'Plano semanal',href: '/meal-plan',            color: 'bg-surface-3' },
   ];
 
   function go(href: string) {
