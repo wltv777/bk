@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
 const SYSTEM_PROMPT = `Você é o METAFOCO Coach — um treinador de dieta e jejum intermitente.
 Seu tom é:
 - Direto e honesto, sem rodeios
@@ -27,6 +25,8 @@ Frases que você pode usar:
 export async function POST(req: NextRequest) {
   try {
     const { messages, context } = await req.json();
+
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
 
     const systemWithContext = context
       ? `${SYSTEM_PROMPT}\n\nDados do usuário:\n${JSON.stringify(context, null, 2)}`

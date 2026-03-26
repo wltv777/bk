@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
-const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-
 const SYSTEM_PROMPT = `Você é um especialista em nutrição e análise de alimentos.
 Analise a imagem fornecida e identifique todos os alimentos visíveis.
 Responda APENAS com um JSON válido no formato abaixo, sem markdown ou texto adicional:
@@ -25,6 +23,7 @@ Se não conseguir identificar, retorne confidence baixo e name como "Alimento n�
 export async function POST(req: NextRequest) {
   try {
     const { imageBase64, mimeType = 'image/jpeg' } = await req.json();
+    const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
 
     if (!imageBase64) {
       return NextResponse.json({ error: 'Imagem não fornecida.' }, { status: 400 });
