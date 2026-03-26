@@ -4,3 +4,5 @@ node_modules/
 *.env
 .DS_Store
 metafoco/tsconfig.tsbuildinfo
+metafoco/public/swe-worker-*.js
+metafoco/next-env.d.ts
