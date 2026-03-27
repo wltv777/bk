@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": "metafoco/.next",
+  "installCommand": "cd metafoco && npm install",
+  "framework": "nextjs"
+}
