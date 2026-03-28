@@ -208,7 +208,10 @@ export default function DashboardPage() {
               <Droplets className="w-4 h-4 text-blue-400" />
               <span className="text-white font-semibold text-sm">Água</span>
             </div>
-            <span className="text-white/40 text-xs">{(water / 1000).toFixed(2)}L / {(waterTarget / 1000).toFixed(1)}L</span>
+            <div className="flex items-center gap-3">
+              <span className="text-white/40 text-xs">{(water / 1000).toFixed(2)}L / {(waterTarget / 1000).toFixed(1)}L</span>
+              <Link href="/water" className="text-blue-400 text-xs font-semibold">Meta IA →</Link>
+            </div>
           </div>
 
           {/* Progress bar */}
