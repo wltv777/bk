@@ -1,28 +1,54 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
-import { collection, query, where, getDocs } from 'firebase/firestore';
+import { collection, query, where, getDocs, doc, getDoc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
 import { useUserStore } from '@/store/userStore';
 import { useDiaryStore } from '@/store/diaryStore';
+import { calculateUserMetrics } from '@/lib/calculations';
 import { ProgressRing } from '@/components/shared/ProgressRing';
 import { MacroBar } from '@/components/shared/MacroBar';
 import { XPBar } from '@/components/gamification/XPBar';
 import { formatPercent, formatCalories, getGreeting, todayString } from '@/lib/utils';
 import { Bell, Flame, Droplets, Scale, Utensils, ChevronRight, Dumbbell, TrendingUp, Plus, Minus } from 'lucide-react';
 import Link from 'next/link';
-import type { MealEntry } from '@/types';
+import type { MealEntry, UserProfile } from '@/types';
 
 const WATER_STEP = 250; // ml
 
 export default function DashboardPage() {
-  const { profile, metrics, gamification, premium } = useUserStore();
+  const { profile, metrics, gamification, premium, setProfile, setMetrics, setPremium, setGamification } = useUserStore();
   const { getTodayTotals, setEntries } = useDiaryStore();
   const [water, setWater] = useState(0);
   const [loadingEntries, setLoadingEntries] = useState(true);
+  const [loadingProfile, setLoadingProfile] = useState(!profile);
 
   const totals = getTodayTotals();
   const today = todayString();
+
+  // Self-healing: load profile from Firestore if store is empty
+  useEffect(() => {
+    if (profile) { setLoadingProfile(false); return; }
+    const unsub = onAuthStateChanged(auth, async (user) => {
+      if (!user) return;
+      try {
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        if (snap.exists()) {
+          const data = snap.data();
+          if (data.profile) {
+            const p = { ...data.profile, uid: user.uid } as UserProfile;
+            setProfile(p);
+            setMetrics(calculateUserMetrics(p));
+          }
+          if (data.premium) setPremium(data.premium);
+          if (data.gamification) setGamification(data.gamification);
+        }
+      } catch { /* stay with empty state */ }
+      setLoadingProfile(false);
+    });
+    return unsub;
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (!auth.currentUser) return;
@@ -58,10 +84,22 @@ export default function DashboardPage() {
     });
   }, [today]);
 
-  if (!profile || !metrics) {
+  if (loadingProfile) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-black">
         <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  // Profile not found even after fetch — user needs to complete onboarding
+  if (!profile || !metrics) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-black gap-4 px-8 text-center">
+        <div className="text-4xl">👋</div>
+        <h2 className="text-white font-bold text-xl">Complete seu perfil</h2>
+        <p className="text-white/40 text-sm">Precisamos de algumas informações para calcular seus macros.</p>
+        <Link href="/onboarding" className="btn-primary mt-2">Começar agora</Link>
       </div>
     );
   }
