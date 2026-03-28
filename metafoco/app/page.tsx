@@ -6,6 +6,7 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { doc, getDoc } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
 import { Logo } from '@/components/logo/Logo';
+import Link from 'next/link';
 
 const LOADING_PHRASES = [
   'Calculando seus macros...',
@@ -27,10 +28,17 @@ export default function RootPage() {
   }, []);
 
   useEffect(() => {
-    // Safety timeout — never leave user stuck forever
+    // Unregister stale service workers that may cache old versions
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then((regs) => {
+        regs.forEach((r) => r.update());
+      });
+    }
+
+    // Safety timeout — 3s max, never leave user stuck
     const timeout = setTimeout(() => {
       router.replace('/login');
-    }, 8000);
+    }, 3000);
 
     const unsub = onAuthStateChanged(auth, async (user) => {
       clearTimeout(timeout);
@@ -43,7 +51,6 @@ export default function RootPage() {
         const hasProfile = snap.exists() && snap.data()?.profile != null;
         router.replace(hasProfile ? '/dashboard' : '/onboarding');
       } catch {
-        // Firestore error (permissions, network) — go to dashboard anyway if logged in
         router.replace('/dashboard');
       }
     });
@@ -87,6 +94,11 @@ export default function RootPage() {
       >
         {LOADING_PHRASES[phraseIndex]}
       </p>
+
+      {/* Escape hatch if stuck */}
+      <Link href="/login" className="text-white/10 text-xs hover:text-white/30 transition-colors mt-4">
+        Entrar manualmente →
+      </Link>
     </div>
   );
 }
