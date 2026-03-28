@@ -342,4 +342,6 @@ function ScannerContent() {
   );
 }
 
-export default function ScannerPage() { return <Suspense fallback={<div className="min-h-screen bg-black" />}><ScannerContent /></Suspense>; }
+export default function ScannerPage() {
+  return <Suspense fallback={<div className="min-h-screen bg-black" />}><ScannerContent /></Suspense>;
+}

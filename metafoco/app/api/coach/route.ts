@@ -25,7 +25,6 @@ Frases que você pode usar:
 export async function POST(req: NextRequest) {
   try {
     const { messages, context } = await req.json();
-
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY || '' });
 
     const systemWithContext = context

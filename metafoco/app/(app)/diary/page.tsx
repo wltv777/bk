@@ -317,4 +317,6 @@ function DiaryContent() {
   );
 }
 
-export default function DiaryPage() { return <Suspense fallback={<div className="min-h-screen bg-black" />}><DiaryContent /></Suspense>; }
+export default function DiaryPage() {
+  return <Suspense fallback={<div className="min-h-screen bg-black" />}><DiaryContent /></Suspense>;
+}

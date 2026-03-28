@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 
+
 const SYSTEM_PROMPT = `Você é um especialista em nutrição e análise de alimentos.
 Analise a imagem fornecida e identifique todos os alimentos visíveis.
 Responda APENAS com um JSON válido no formato abaixo, sem markdown ou texto adicional:

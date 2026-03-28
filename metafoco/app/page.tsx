@@ -27,16 +27,31 @@ export default function RootPage() {
   }, []);
 
   useEffect(() => {
+    // Safety timeout — never leave user stuck forever
+    const timeout = setTimeout(() => {
+      router.replace('/login');
+    }, 8000);
+
     const unsub = onAuthStateChanged(auth, async (user) => {
+      clearTimeout(timeout);
       if (!user) {
         router.replace('/login');
         return;
       }
-      const snap = await getDoc(doc(db, 'users', user.uid));
-      const hasProfile = snap.exists() && snap.data()?.profile != null;
-      router.replace(hasProfile ? '/dashboard' : '/onboarding');
+      try {
+        const snap = await getDoc(doc(db, 'users', user.uid));
+        const hasProfile = snap.exists() && snap.data()?.profile != null;
+        router.replace(hasProfile ? '/dashboard' : '/onboarding');
+      } catch {
+        // Firestore error (permissions, network) — go to dashboard anyway if logged in
+        router.replace('/dashboard');
+      }
     });
-    return unsub;
+
+    return () => {
+      clearTimeout(timeout);
+      unsub();
+    };
   }, [router]);
 
   return (
