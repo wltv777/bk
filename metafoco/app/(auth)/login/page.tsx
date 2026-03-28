@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Eye, EyeOff, Flame, Lock, Mail } from 'lucide-react';
@@ -16,6 +16,18 @@ export default function LoginPage() {
   const [password, setPassword] = useState('');
   const [showPass, setShowPass] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  // Auto-redirect if already logged in
+  useEffect(() => {
+    import('firebase/auth').then(({ onAuthStateChanged }) => {
+      import('@/lib/firebase').then(({ auth }) => {
+        const unsub = onAuthStateChanged(auth, (user) => {
+          if (user) router.replace('/dashboard');
+        });
+        return unsub;
+      });
+    });
+  }, [router]);
 
   async function handleLogin(e: React.FormEvent) {
     e.preventDefault();
