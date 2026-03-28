@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { collection, addDoc } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
@@ -11,7 +11,7 @@ import { cn, getMealSlotLabel, todayString } from '@/lib/utils';
 import toast from 'react-hot-toast';
 import type { ScanFoodResult, MealSlot } from '@/types';
 
-export default function ScannerPage() {
+function ScannerContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const mode = searchParams.get('mode') ?? 'camera';
@@ -340,4 +340,8 @@ export default function ScannerPage() {
       </div>
     </div>
   );
+}
+
+export default function ScannerPage() {
+  return <Suspense fallback={<div className="min-h-screen bg-black" />}><ScannerContent /></Suspense>;
 }

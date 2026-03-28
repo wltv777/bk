@@ -122,7 +122,7 @@ export const XP_REWARDS = {
 } as const;
 
 // ─── Nomes de nível por XP ───────────────────────────────────
-export function getLevelInfo(xp: number): { level: number; name: string; nextLevelXP: number } {
+export function getLevelInfo(xp: number): { level: number; name: string; nextLevelXP: number; currentLevelMin: number } {
   const levels = [
     { min: 0,    name: 'Iniciante Corajoso' },
     { min: 100,  name: 'Guerreiro da Dieta' },

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { collection, addDoc, getDocs, query, where, deleteDoc, doc, serverTimestamp } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
@@ -26,7 +26,7 @@ interface SearchResult {
   fiber_100g?: number;
 }
 
-export default function DiaryPage() {
+function DiaryContent() {
   const { entries, getTodayTotals, addEntry, removeEntry, setEntries } = useDiaryStore();
   const { metrics } = useUserStore();
   const searchParams = useSearchParams();
@@ -315,4 +315,8 @@ export default function DiaryPage() {
       </div>
     </div>
   );
+}
+
+export default function DiaryPage() {
+  return <Suspense fallback={<div className="min-h-screen bg-black" />}><DiaryContent /></Suspense>;
 }
