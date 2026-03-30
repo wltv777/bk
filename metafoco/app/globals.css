@@ -31,18 +31,32 @@
   ::-webkit-scrollbar { width: 4px; height: 4px; }
   ::-webkit-scrollbar-track { background: #111; }
   ::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
-  ::-webkit-scrollbar-thumb:hover { background: #FFD700; }
+  ::-webkit-scrollbar-thumb:hover { background: #F5A623; }
 
   /* Safe area for mobile */
   .safe-top    { padding-top: env(safe-area-inset-top); }
   .safe-bottom { padding-bottom: env(safe-area-inset-bottom); }
 }
 
+@keyframes gearSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(245,166,35,0.3); }
+  50%       { box-shadow: 0 0 24px rgba(245,166,35,0.7); }
+}
+@keyframes rippleExpand {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
 @layer components {
   /* ── Logo gradient text ── */
   .logo-text {
     font-family: var(--font-bebas);
-    background: linear-gradient(135deg, #FFD700 0%, #F5A623 50%, #FF6B35 100%);
+    background: linear-gradient(135deg, #F5A623 0%, #E8541A 50%, #C0392B 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -52,13 +66,13 @@
   /* ── Cards ── */
   .card {
     @apply bg-surface rounded-2xl p-4;
-    border: 1px solid rgba(255, 215, 0, 0.08);
+    border: 1px solid rgba(245, 166, 35, 0.08);
   }
 
   .card-highlight {
     @apply bg-surface rounded-2xl p-4;
-    border: 1px solid rgba(255, 215, 0, 0.25);
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.06);
+    border: 1px solid rgba(245, 166, 35, 0.25);
+    box-shadow: 0 0 20px rgba(245, 166, 35, 0.06);
   }
 
   /* ── Buttons ── */
@@ -71,7 +85,7 @@
   }
 
   .btn-primary:hover {
-    box-shadow: 0 8px 24px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 8px 24px rgba(245, 166, 35, 0.4);
   }
 
   .btn-outline {
@@ -97,8 +111,8 @@
     @apply fixed bottom-24 right-5 w-14 h-14 rounded-full
            flex items-center justify-center
            transition-all duration-200 active:scale-90 z-50;
-    background: linear-gradient(135deg, #FFD700, #F5A623);
-    box-shadow: 0 8px 32px rgba(255, 215, 0, 0.4);
+    background: linear-gradient(135deg, #F5A623, #E8541A);
+    box-shadow: 0 8px 32px rgba(245, 166, 35, 0.4);
   }
 
   /* ── Bottom Nav ── */
@@ -106,7 +120,7 @@
     @apply fixed bottom-0 left-0 right-0 z-40;
     background: rgba(0, 0, 0, 0.95);
     backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 215, 0, 0.08);
+    border-top: 1px solid rgba(245, 166, 35, 0.08);
     padding-bottom: env(safe-area-inset-bottom);
   }
 
@@ -150,25 +164,25 @@
 
   /* ── Fasting Ring outer glow ── */
   .fasting-active {
-    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.5));
+    filter: drop-shadow(0 0 12px rgba(245, 166, 35, 0.5));
   }
 
   /* ── XP Bar ── */
   .xp-bar-fill {
-    background: linear-gradient(90deg, #FFD700, #F5A623);
+    background: linear-gradient(90deg, #F5A623, #E8541A);
     transition: width 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   /* ── Gamification badges ── */
   .badge-locked   { @apply opacity-30 grayscale; }
-  .badge-unlocked { filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5)); }
+  .badge-unlocked { filter: drop-shadow(0 0 8px rgba(245, 166, 35, 0.5)); }
 }
 
 @layer utilities {
   .text-balance { text-wrap: balance; }
 
   .gradient-text {
-    background: linear-gradient(135deg, #FFD700 0%, #FF6B35 100%);
+    background: linear-gradient(135deg, #F5A623 0%, #E8541A 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -182,4 +196,8 @@
   .no-tap-highlight {
     -webkit-tap-highlight-color: transparent;
   }
+
+  .gear-idle { animation: pulseGlow 2.5s ease-in-out infinite; }
+  .gear-spin { animation: gearSpin 0.6s ease-in-out; }
+  .btn-ripple:active { animation: rippleExpand 0.3s ease-out; }
 }

@@ -10,11 +10,12 @@ const config: Config = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#FFD700',
-          dark: '#F5A623',
-          light: '#FFE566',
+          DEFAULT: '#F5A623',
+          dark: '#E8541A',
+          light: '#FFCC80',
         },
-        accent: '#FF6B35',
+        secondary: '#E8541A',
+        accent: '#2ECC71',
         surface: {
           DEFAULT: '#111111',
           2: '#1A1A1A',
@@ -30,16 +31,16 @@ const config: Config = {
         body: ['var(--font-inter)', 'system-ui', 'sans-serif'],
       },
       backgroundImage: {
-        'logo-gradient': 'linear-gradient(135deg, #FFD700 0%, #F5A623 50%, #FF6B35 100%)',
+        'logo-gradient': 'linear-gradient(135deg, #F5A623 0%, #E8541A 50%, #C0392B 100%)',
         'card-gradient': 'linear-gradient(135deg, #1A1A1A 0%, #111111 100%)',
-        'primary-gradient': 'linear-gradient(135deg, #FFD700 0%, #F5A623 100%)',
+        'primary-gradient': 'linear-gradient(135deg, #F5A623 0%, #E8541A 100%)',
         'danger-gradient': 'linear-gradient(135deg, #FF3B30 0%, #FF6B35 100%)',
         'success-gradient': 'linear-gradient(135deg, #00FF9D 0%, #00CC7A 100%)',
       },
       boxShadow: {
-        'primary-glow': '0 0 20px rgba(255, 215, 0, 0.3)',
+        'primary-glow': '0 0 20px rgba(245, 166, 35, 0.3)',
         'surface-glow': '0 4px 24px rgba(0, 0, 0, 0.6)',
-        'fab': '0 8px 32px rgba(255, 215, 0, 0.4)',
+        'fab': '0 8px 32px rgba(245, 166, 35, 0.4)',
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',

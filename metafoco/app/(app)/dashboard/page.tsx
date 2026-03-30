@@ -6,12 +6,13 @@ import { onAuthStateChanged } from 'firebase/auth';
 import { auth, db } from '@/lib/firebase';
 import { useUserStore } from '@/store/userStore';
 import { useDiaryStore } from '@/store/diaryStore';
+import { useFastingStore } from '@/store/fastingStore';
 import { calculateUserMetrics } from '@/lib/calculations';
 import { ProgressRing } from '@/components/shared/ProgressRing';
 import { MacroBar } from '@/components/shared/MacroBar';
 import { XPBar } from '@/components/gamification/XPBar';
 import { formatPercent, formatCalories, getGreeting, todayString } from '@/lib/utils';
-import { Bell, Flame, Droplets, Scale, Utensils, ChevronRight, Dumbbell, TrendingUp, Plus, Minus } from 'lucide-react';
+import { Bell, Flame, Droplets, Plus, Minus, Settings, Camera, ChefHat, Activity, CalendarDays, Zap } from 'lucide-react';
 import Link from 'next/link';
 import type { MealEntry, UserProfile } from '@/types';
 
@@ -20,9 +21,11 @@ const WATER_STEP = 250; // ml
 export default function DashboardPage() {
   const { profile, metrics, gamification, premium, setProfile, setMetrics, setPremium, setGamification } = useUserStore();
   const { getTodayTotals, setEntries } = useDiaryStore();
+  const { activeSession, getRemainingSeconds, getElapsedPercent } = useFastingStore();
   const [water, setWater] = useState(0);
   const [loadingEntries, setLoadingEntries] = useState(true);
   const [loadingProfile, setLoadingProfile] = useState(!profile);
+  const [fastingRemaining, setFastingRemaining] = useState(0);
 
   const totals = getTodayTotals();
   const today = todayString();
@@ -68,6 +71,16 @@ export default function DashboardPage() {
     if (stored) setWater(Number(stored));
   }, [today]);
 
+  // Fasting countdown
+  useEffect(() => {
+    if (!activeSession) return;
+    const interval = setInterval(() => {
+      setFastingRemaining(getRemainingSeconds());
+    }, 1000);
+    setFastingRemaining(getRemainingSeconds());
+    return () => clearInterval(interval);
+  }, [activeSession, getRemainingSeconds]);
+
   const addWater = useCallback(() => {
     setWater((prev) => {
       const next = prev + WATER_STEP;
@@ -83,6 +96,13 @@ export default function DashboardPage() {
       return next;
     });
   }, [today]);
+
+  const formatFastingTime = (seconds: number) => {
+    const h = Math.floor(seconds / 3600);
+    const m = Math.floor((seconds % 3600) / 60);
+    const s = seconds % 60;
+    return `${h.toString().padStart(2, '0')}:${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+  };
 
   if (loadingProfile) {
     return (
@@ -109,25 +129,64 @@ export default function DashboardPage() {
   const waterTarget = (metrics.targetWater || 2500);
   const waterPercent = Math.min(Math.round((water / waterTarget) * 100), 100);
   const firstName = profile.name.split(' ')[0];
+  const fastingElapsed = getElapsedPercent();
 
-  const goalLabels: Record<string, string> = {
-    lose_weight: 'Emagrecimento',
-    gain_muscle: 'Ganho de Massa',
-    maintain: 'Manutenção',
-    recomp: 'Recomposição',
-    performance: 'Performance',
-  };
+  const quickActions = [
+    {
+      label: 'Scanner IA',
+      sublabel: 'Analise sua refeição',
+      href: '/scanner',
+      icon: Camera,
+      gradient: 'linear-gradient(135deg, #E8541A, #C0392B)',
+      shadow: 'rgba(232,84,26,0.4)',
+    },
+    {
+      label: 'Montar Dieta',
+      sublabel: 'Plano personalizado',
+      href: '/diet-builder',
+      icon: ChefHat,
+      gradient: 'linear-gradient(135deg, #2ECC71, #27AE60)',
+      shadow: 'rgba(46,204,113,0.4)',
+    },
+    {
+      label: 'Bioimpedância',
+      sublabel: 'Análise corporal',
+      href: '/bioimpedance',
+      icon: Activity,
+      gradient: 'linear-gradient(135deg, #3498DB, #2980B9)',
+      shadow: 'rgba(52,152,219,0.4)',
+    },
+    {
+      label: 'Plano Semanal',
+      sublabel: 'Treinos e refeições',
+      href: '/meal-plan',
+      icon: CalendarDays,
+      gradient: 'linear-gradient(135deg, #9B59B6, #8E44AD)',
+      shadow: 'rgba(155,89,182,0.4)',
+    },
+  ];
+
+  // suppress unused variable warning for loadingEntries
+  void loadingEntries;
 
   return (
-    <div className="min-h-screen bg-black pb-24">
+    <div className="min-h-screen bg-black pb-28">
       {/* Header */}
       <div className="px-5 pt-12 pb-4 flex items-center justify-between">
         <div>
           <p className="text-white/40 text-xs uppercase tracking-widest">{getGreeting()}</p>
           <h1 className="text-white font-bold text-2xl font-display mt-0.5">{firstName} 👊</h1>
+          <p className="text-white/30 text-xs mt-0.5 capitalize">
+            {new Date().toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' })}
+          </p>
         </div>
         <div className="flex items-center gap-3">
-          <div className="text-sm font-display logo-text">MF</div>
+          <div
+            className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-black text-lg"
+            style={{ background: 'linear-gradient(135deg, #F5A623, #E8541A)' }}
+          >
+            {firstName.charAt(0).toUpperCase()}
+          </div>
           <Link href="/settings" className="p-2 rounded-full bg-white/5">
             <Bell className="w-4 h-4 text-white/40" />
           </Link>
@@ -148,24 +207,14 @@ export default function DashboardPage() {
           </div>
         )}
 
-        {/* Goal badge */}
-        <div className="flex items-center gap-2">
-          <div className="flex items-center gap-1.5 bg-primary/10 border border-primary/20 px-3 py-1 rounded-full">
-            <TrendingUp className="w-3 h-3 text-primary" />
-            <span className="text-xs text-primary font-semibold">{goalLabels[profile.goal] || 'Objetivo'}</span>
-          </div>
-          <span className="text-white/20 text-xs">•</span>
-          <span className="text-white/30 text-xs">Meta: {metrics.targetCalories} kcal/dia</span>
-        </div>
-
-        {/* Calories card */}
+        {/* Macro ring card */}
         <div className="card">
           <div className="flex items-center gap-5">
             <ProgressRing
               value={calPercent}
               size={110}
               strokeWidth={10}
-              color={calPercent > 100 ? '#FF3B30' : '#FFD700'}
+              color={calPercent > 100 ? '#FF3B30' : '#F5A623'}
               label={`${calPercent}%`}
               sublabel="kcal"
             />
@@ -194,11 +243,98 @@ export default function DashboardPage() {
             <MacroBar label="Carboidrato" consumed={totals.carbs} target={metrics.targetCarbs} color="#F97316" bgColor="bg-orange-500" textColor="text-orange-400" />
             <MacroBar label="Gordura" consumed={totals.fat} target={metrics.targetFat} color="#EAB308" bgColor="bg-yellow-500" textColor="text-yellow-400" />
           </div>
+        </div>
 
-          <Link href="/diary?action=add" className="mt-4 flex items-center justify-center gap-2 py-2.5 rounded-xl bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-colors">
-            <Utensils className="w-4 h-4 text-primary" />
-            <span className="text-primary text-sm font-semibold">Registrar refeição</span>
-          </Link>
+        {/* Fasting card */}
+        <div className="card-highlight">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-2">
+              <Zap className="w-4 h-4 text-primary" />
+              <span className="text-white font-semibold text-sm">Jejum Intermitente</span>
+            </div>
+            {activeSession && (
+              <span className="text-xs text-primary/70 font-semibold bg-primary/10 px-2 py-0.5 rounded-full">
+                {activeSession.protocol}
+              </span>
+            )}
+          </div>
+
+          {activeSession ? (
+            <div className="flex items-center gap-4">
+              {/* Pulsing ring */}
+              <div className="relative w-16 h-16 flex-shrink-0">
+                <svg className="w-full h-full -rotate-90" viewBox="0 0 64 64">
+                  <circle cx="32" cy="32" r="28" fill="none" stroke="rgba(245,166,35,0.15)" strokeWidth="4" />
+                  <circle
+                    cx="32" cy="32" r="28"
+                    fill="none"
+                    stroke="#F5A623"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeDasharray={`${2 * Math.PI * 28}`}
+                    strokeDashoffset={`${2 * Math.PI * 28 * (1 - fastingElapsed / 100)}`}
+                    className="fasting-active transition-all duration-1000"
+                  />
+                </svg>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Flame className="w-5 h-5 text-primary fill-primary/60" />
+                </div>
+              </div>
+              <div className="flex-1">
+                <div className="text-white font-bold text-xl font-display">
+                  {formatFastingTime(fastingRemaining)}
+                </div>
+                <div className="text-white/40 text-xs">tempo restante</div>
+                <div className="mt-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                  <div
+                    className="h-full rounded-full transition-all duration-1000"
+                    style={{ width: `${fastingElapsed}%`, background: 'linear-gradient(90deg, #F5A623, #E8541A)' }}
+                  />
+                </div>
+              </div>
+              <Link href="/fasting" className="text-primary text-xs font-semibold">
+                Ver →
+              </Link>
+            </div>
+          ) : (
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-white/50 text-sm">Nenhum jejum ativo</p>
+                <p className="text-white/30 text-xs">Iniciar protocolo de jejum</p>
+              </div>
+              <Link
+                href="/fasting"
+                className="px-4 py-2 rounded-xl text-black text-sm font-bold active:scale-95 transition-transform"
+                style={{ background: 'linear-gradient(135deg, #F5A623, #E8541A)' }}
+              >
+                Iniciar Jejum
+              </Link>
+            </div>
+          )}
+        </div>
+
+        {/* Quick actions 2x2 grid */}
+        <div>
+          <h2 className="text-white/60 text-xs uppercase tracking-widest mb-3">Ações Rápidas</h2>
+          <div className="grid grid-cols-2 gap-3">
+            {quickActions.map(({ label, sublabel, href, icon: Icon, gradient, shadow }) => (
+              <Link
+                key={href}
+                href={href}
+                className="rounded-2xl p-4 flex flex-col gap-2 active:scale-95 transition-transform"
+                style={{
+                  background: gradient,
+                  boxShadow: `0 8px 24px ${shadow}`,
+                }}
+              >
+                <Icon className="w-6 h-6 text-white" />
+                <div>
+                  <div className="text-white font-bold text-sm leading-tight">{label}</div>
+                  <div className="text-white/70 text-xs mt-0.5">{sublabel}</div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
 
         {/* Water tracker */}
@@ -208,13 +344,9 @@ export default function DashboardPage() {
               <Droplets className="w-4 h-4 text-blue-400" />
               <span className="text-white font-semibold text-sm">Água</span>
             </div>
-            <div className="flex items-center gap-3">
-              <span className="text-white/40 text-xs">{(water / 1000).toFixed(2)}L / {(waterTarget / 1000).toFixed(1)}L</span>
-              <Link href="/water" className="text-blue-400 text-xs font-semibold">Meta IA →</Link>
-            </div>
+            <span className="text-white/40 text-xs">{(water / 1000).toFixed(2)}L / {(waterTarget / 1000).toFixed(1)}L</span>
           </div>
 
-          {/* Progress bar */}
           <div className="h-2 bg-surface-2 rounded-full mb-3 overflow-hidden">
             <div
               className="h-full rounded-full transition-all duration-500"
@@ -222,7 +354,6 @@ export default function DashboardPage() {
             />
           </div>
 
-          {/* Water bubbles */}
           <div className="flex gap-1.5 mb-3 flex-wrap">
             {Array.from({ length: Math.ceil(waterTarget / WATER_STEP) }).map((_, i) => (
               <div
@@ -255,51 +386,6 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Quick stats row */}
-        <div className="grid grid-cols-3 gap-3">
-          <Link href="/bioimpedance" className="card flex flex-col items-center gap-1.5 py-4 hover:border-primary/30 transition-colors text-center">
-            <Scale className="w-5 h-5 text-primary" />
-            <span className="text-white font-bold text-sm">{profile.weight}kg</span>
-            <span className="text-white/30 text-xs">Peso</span>
-          </Link>
-          <Link href="/workout" className="card flex flex-col items-center gap-1.5 py-4 hover:border-primary/30 transition-colors text-center">
-            <Dumbbell className="w-5 h-5 text-orange-400" />
-            <span className="text-white font-bold text-sm">Treino</span>
-            <span className="text-white/30 text-xs">Ver plano</span>
-          </Link>
-          <Link href="/progress" className="card flex flex-col items-center gap-1.5 py-4 hover:border-primary/30 transition-colors text-center">
-            <TrendingUp className="w-5 h-5 text-green-400" />
-            <span className="text-white font-bold text-sm">Progresso</span>
-            <span className="text-white/30 text-xs">Fotos & peso</span>
-          </Link>
-        </div>
-
-        {/* Today's meals summary */}
-        <Link href="/diary" className="card flex items-center gap-3 hover:border-primary/20 transition-colors">
-          <div className="p-2 rounded-xl bg-primary/10">
-            <Utensils className="w-4 h-4 text-primary" />
-          </div>
-          <div className="flex-1">
-            <div className="text-white text-sm font-semibold">Diário alimentar</div>
-            <div className="text-white/40 text-xs mt-0.5">
-              {loadingEntries ? 'Carregando...' : `${Math.round(totals.calories)} kcal hoje`}
-            </div>
-          </div>
-          <ChevronRight className="w-4 h-4 text-white/20" />
-        </Link>
-
-        {/* Plan shortcut */}
-        <Link href="/meal-plan" className="card flex items-center gap-3 hover:border-primary/20 transition-colors">
-          <div className="p-2 rounded-xl bg-green-500/10">
-            <TrendingUp className="w-4 h-4 text-green-400" />
-          </div>
-          <div className="flex-1">
-            <div className="text-white text-sm font-semibold">Plano semanal</div>
-            <div className="text-white/40 text-xs mt-0.5">Treinos e alimentação</div>
-          </div>
-          <ChevronRight className="w-4 h-4 text-white/20" />
-        </Link>
-
         {/* Premium CTA */}
         {!premium.active && (
           <Link href="/premium" className="block">
@@ -307,7 +393,7 @@ export default function DashboardPage() {
               className="rounded-2xl p-4 flex items-center gap-3"
               style={{
                 background: 'linear-gradient(135deg, #1a1400 0%, #1a0800 100%)',
-                border: '1px solid rgba(255,215,0,0.2)',
+                border: '1px solid rgba(245,166,35,0.2)',
               }}
             >
               <span className="text-2xl">💎</span>
@@ -315,11 +401,23 @@ export default function DashboardPage() {
                 <div className="text-primary font-bold text-sm">Desbloqueie o Premium</div>
                 <div className="text-white/40 text-xs">Scanner ilimitado, IA Coach 24h e mais</div>
               </div>
-              <ChevronRight className="w-4 h-4 text-primary" />
+              <span className="text-primary text-sm">→</span>
             </div>
           </Link>
         )}
       </div>
+
+      {/* Floating animated gear button */}
+      <Link
+        href="/settings"
+        className="fixed bottom-24 right-4 z-50 w-14 h-14 rounded-full flex items-center justify-center gear-idle hover:rotate-45 transition-transform duration-300"
+        style={{
+          background: 'linear-gradient(135deg, #1A1A1A, #2A2A2A)',
+          border: '2px solid rgba(245,166,35,0.5)',
+        }}
+      >
+        <Settings className="w-6 h-6 text-primary" />
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { doc, updateDoc } from 'firebase/firestore';
 import { auth, db } from '@/lib/firebase';
@@ -9,7 +9,7 @@ import { useUserStore } from '@/store/userStore';
 import { XPBar } from '@/components/gamification/XPBar';
 import { BADGES } from '@/lib/gamification';
 import { getActivityLabel, getGoalLabel } from '@/lib/utils';
-import { LogOut, ChevronRight, Crown, Zap, Shield, Bell, CalendarDays, Droplets } from 'lucide-react';
+import { LogOut, ChevronRight, Crown, Zap, Shield, Bell, CalendarDays, Droplets, Settings } from 'lucide-react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import toast from 'react-hot-toast';
@@ -18,6 +18,13 @@ export default function SettingsPage() {
   const router = useRouter();
   const { logout } = useAuth();
   const { profile, metrics, gamification, premium, notifications } = useUserStore();
+  const [gearSpinning, setGearSpinning] = useState(false);
+
+  useEffect(() => {
+    setGearSpinning(true);
+    const timer = setTimeout(() => setGearSpinning(false), 800);
+    return () => clearTimeout(timer);
+  }, []);
 
   async function handleLogout() {
     await logout();
@@ -29,9 +36,17 @@ export default function SettingsPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      <div className="px-5 pt-12 pb-4">
-        <h1 className="section-title text-3xl mb-1">Perfil</h1>
-        <p className="text-white/40 text-sm">Configurações e conquistas</p>
+      <div className="px-5 pt-12 pb-4 flex items-center gap-3">
+        <Settings
+          className={cn(
+            'w-7 h-7 text-primary transition-transform duration-700',
+            gearSpinning ? 'animate-spin-slow' : ''
+          )}
+        />
+        <div>
+          <h1 className="section-title text-3xl mb-1">Perfil</h1>
+          <p className="text-white/40 text-sm">Configurações e conquistas</p>
+        </div>
       </div>
 
       <div className="px-5 space-y-4 pb-6">
