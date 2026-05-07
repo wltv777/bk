@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ilusão.IA — Inteligência Artificial que Vende</title>
+  <meta name="description" content="Aprenda o segredo para criar conteúdo com IA que realmente converte. Método Ilusão.IA." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Barlow+Condensed:wght@400;600;700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Tokens ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:     #FF6B00;
+      --secondary:   #FF9500;
+      --bg:          #0A0A0A;
+      --surface:     #111111;
+      --surface-alt: #1A1A1A;
+      --text:        #FFFFFF;
+      --muted:       #999999;
+      --gradient:    linear-gradient(135deg, #FF6B00, #FF9500);
+      --font-display: 'Syne', sans-serif;
+      --font-heading: 'Barlow Condensed', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: 24px;
+    }
+
+    /* ── Utility ── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      border-radius: 4px;
+      font-family: var(--font-heading);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      cursor: pointer;
+      border: none;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,107,0,.35); }
+    .btn:active { transform: translateY(0); }
+
+    .btn-primary {
+      background: var(--gradient);
+      color: #fff;
+    }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-outline:hover { background: rgba(255,107,0,.08); }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 16px;
+      border: 1px solid rgba(255,107,0,.5);
+      border-radius: 999px;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(255,107,0,.08);
+    }
+    .pill::before { content: '✦'; font-size: .6rem; }
+
+    .section-label {
+      font-family: var(--font-heading);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--primary);
+    }
+
+    .highlight { color: var(--primary); }
+
+    /* ── Nav ── */
+    #nav {
+      position: fixed;
+      top: 0;
+      inset-inline: 0;
+      z-index: 900;
+      padding-block: 18px;
+      transition: background .3s, backdrop-filter .3s;
+    }
+    #nav.scrolled {
+      background: rgba(10,10,10,.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: .04em;
+    }
+    .logo-icon {
+      width: 34px; height: 34px;
+      background: var(--gradient);
+      border-radius: 6px;
+      display: grid;
+      place-items: center;
+      font-size: .9rem;
+      color: #fff;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta { font-size: .85rem !important; padding: 10px 22px !important; }
+
+    /* ── Ticker ── */
+    .ticker-wrap {
+      overflow: hidden;
+      background: var(--primary);
+      padding-block: 10px;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker 20s linear infinite;
+      width: max-content;
+    }
+    .ticker-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding-inline: 24px;
+      font-family: var(--font-heading);
+      font-weight: 900;
+      font-size: 1rem;
+      letter-spacing: .25em;
+      color: #fff;
+      white-space: nowrap;
+    }
+    .ticker-item span { color: rgba(255,255,255,.45); font-size: .5rem; }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── Hero ── */
+    #hero {
+      padding-top: 120px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(to right, #0A0A0A 42%, transparent),
+        radial-gradient(ellipse 70% 80% at 75% 50%, rgba(255,107,0,.12), transparent);
+    }
+    .hero-grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 70% 50%, black, transparent);
+    }
+    .hero-glow {
+      position: absolute;
+      right: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(255,107,0,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+      padding-block: 80px;
+    }
+
+    .hero-content { max-width: 580px; }
+    .hero-content .pill { margin-bottom: 28px; }
+
+    .hero-headline {
+      font-family: var(--font-heading);
+      font-size: clamp(2.6rem, 5.5vw, 4.2rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -.01em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero-headline .line-highlight {
+      display: block;
+      color: var(--primary);
+      -webkit-text-stroke: 0;
+    }
+
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 460px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-sub strong { color: var(--text); }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .hero-trust {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+      font-size: .82rem;
+      color: var(--muted);
+    }
+    .trust-avatars {
+      display: flex;
+    }
+    .trust-avatars span {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      border: 2px solid var(--bg);
+      background: var(--surface-alt);
+      display: grid;
+      place-items: center;
+      font-size: .65rem;
+      margin-left: -8px;
+    }
+    .trust-avatars span:first-child { margin-left: 0; }
+
+    /* Hero visual side */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero-card-stack {
+      position: relative;
+      width: 340px; height: 420px;
+    }
+    .hero-card {
+      position: absolute;
+      border-radius: 16px;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .hero-card-main {
+      width: 300px;
+      top: 40px; left: 20px;
+      z-index: 2;
+      background: linear-gradient(145deg, #161616, #111);
+    }
+    .hero-card-back {
+      width: 260px;
+      top: 10px; left: 50px;
+      z-index: 1;
+      transform: rotate(6deg);
+      opacity: .55;
+    }
+    .card-icon-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .card-badge {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(255,107,0,.1);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+    .card-metric {
+      font-family: var(--font-heading);
+      font-size: 2.4rem;
+      font-weight: 900;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .card-metric-label {
+      font-size: .75rem;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+    .card-bar-wrap { margin-bottom: 14px; }
+    .card-bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: .72rem;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+    .card-bar {
+      height: 6px;
+      background: rgba(255,255,255,.07);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .card-bar-fill {
+      height: 100%;
+      background: var(--gradient);
+      border-radius: 3px;
+      animation: fill-bar 2s ease forwards;
+    }
+    @keyframes fill-bar {
+      from { width: 0; }
+    }
+
+    .float-badge {
+      position: absolute;
+      background: var(--surface-alt);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .78rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .float-badge .icon {
+      width: 32px; height: 32px;
+      background: var(--gradient);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: .9rem;
+      flex-shrink: 0;
+    }
+    .fb-1 { top: 0; left: -60px; animation: float 4s ease-in-out infinite; }
+    .fb-2 { bottom: 60px; right: -40px; animation: float 4s ease-in-out infinite .8s; }
+    .fb-3 { bottom: 0; left: 0; animation: float 4s ease-in-out infinite 1.6s; }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      padding-block: 28px;
+    }
+    .stats-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .stat-item { text-align: center; flex: 1; min-width: 120px; }
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 2.2rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .stat-label { font-size: .8rem; color: var(--muted); margin-top: 4px; }
+    .stat-divider {
+      width: 1px; height: 48px;
+      background: rgba(255,255,255,.08);
+    }
+
+    /* ── About / Problema ── */
+    #about {
+      padding-block: 100px;
+    }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-visual {
+      position: relative;
+    }
+    .about-box {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .pain-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 24px;
+    }
+    .pain-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 10px;
+    }
+    .pain-icon {
+      width: 36px; height: 36px;
+      background: rgba(255,107,0,.1);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+      color: var(--primary);
+    }
+    .pain-text { font-size: .88rem; color: var(--muted); line-height: 1.5; }
+    .pain-text strong { color: var(--text); }
+
+    .about-content .section-label { margin-bottom: 12px; }
+    .about-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 900;
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .about-content p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 14px;
+      font-size: .95rem;
+    }
+    .about-content p strong { color: var(--text); }
+
+    /* ── Método ── */
+    #metodo {
+      padding-block: 100px;
+      background: var(--surface);
+    }
+    .section-header {
+      text-align: center;
+      max-width: 680px;
+      margin-inline: auto;
+      margin-bottom: 70px;
+    }
+    .section-header .section-label { margin-bottom: 12px; }
+    .section-header h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 4.5vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    .section-header p {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.7;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step-card {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+      padding: 32px 28px;
+      position: relative;
+      transition: border-color .3s, transform .3s;
+    }
+    .step-card:hover {
+      border-color: rgba(255,107,0,.35);
+      transform: translateY(-4px);
+    }
+    .step-number {
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      font-weight: 900;
+      color: rgba(255,107,0,.1);
+      line-height: 1;
+      position: absolute;
+      top: 16px; right: 24px;
+    }
+    .step-icon {
+      width: 48px; height: 48px;
+      background: rgba(255,107,0,.12);
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .step-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      margin-bottom: 10px;
+    }
+    .step-card p { font-size: .87rem; color: var(--muted); line-height: 1.65; }
+
+    /* ── O Que Você Vai Aprender ── */
+    #conteudo {
+      padding-block: 100px;
+    }
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      margin-top: 60px;
+    }
+    .module-card {
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      padding: 24px;
+      transition: border-color .25s;
+    }
+    .module-card:hover { border-color: rgba(255,107,0,.3); }
+    .module-num {
+      font-family: var(--font-heading);
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+      min-width: 44px;
+    }
+    .module-info h3 {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .03em;
+      margin-bottom: 8px;
+    }
+    .module-info p { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── Resultados ── */
+    #resultados {
+      padding-block: 100px;
+      background: var(--surface);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 60px;
+    }
+    .testi-card {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .testi-stars {
+      color: var(--primary);
+      font-size: .9rem;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
+    }
+    .testi-text {
+      font-size: .88rem;
+      color: var(--muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .testi-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testi-avatar {
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--surface-alt);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      border: 2px solid rgba(255,107,0,.3);
+    }
+    .testi-name { font-weight: 600; font-size: .88rem; }
+    .testi-role { font-size: .75rem; color: var(--muted); }
+
+    .result-highlight {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .result-box {
+      text-align: center;
+      padding: 32px 20px;
+      background: var(--bg);
+      border: 1px solid rgba(255,107,0,.18);
+      border-radius: 14px;
+    }
+    .result-box .num {
+      font-family: var(--font-heading);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .result-box .desc { font-size: .82rem; color: var(--muted); margin-top: 6px; }
+
+    /* ── Para Quem é ── */
+    #para-quem {
+      padding-block: 100px;
+    }
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+    .audience-card {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 24px;
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 14px;
+      transition: border-color .25s;
+    }
+    .audience-card:hover { border-color: rgba(255,107,0,.3); }
+    .audience-icon {
+      width: 44px; height: 44px;
+      background: rgba(255,107,0,.1);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+    .audience-info h3 {
+      font-weight: 700;
+      font-size: .95rem;
+      margin-bottom: 6px;
+    }
+    .audience-info p { font-size: .83rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── Bônus ── */
+    #bonus {
+      padding-block: 100px;
+      background: var(--surface);
+    }
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 60px;
+    }
+    .bonus-card {
+      background: var(--bg);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .bonus-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient);
+    }
+    .bonus-label {
+      font-size: .65rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .bonus-icon { font-size: 2rem; margin-bottom: 14px; }
+    .bonus-card h3 {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .02em;
+      margin-bottom: 8px;
+    }
+    .bonus-card p { font-size: .83rem; color: var(--muted); line-height: 1.6; }
+    .bonus-value {
+      margin-top: 16px;
+      font-size: .78rem;
+      color: var(--muted);
+    }
+    .bonus-value del { opacity: .6; }
+    .bonus-value strong { color: var(--primary); font-size: .92rem; }
+
+    /* ── Garantia ── */
+    #garantia {
+      padding-block: 100px;
+    }
+    .garantia-inner {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .garantia-badge {
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      border: 4px solid var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+      flex-shrink: 0;
+      position: relative;
+    }
+    .garantia-badge::before {
+      content: '';
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px dashed rgba(255,107,0,.3);
+    }
+    .garantia-days {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .garantia-badge span { font-size: .8rem; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; }
+    .garantia-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .garantia-content p { color: var(--muted); font-size: .93rem; line-height: 1.8; margin-bottom: 12px; }
+    .garantia-content p strong { color: var(--text); }
+
+    /* ── Preço / CTA ── */
+    #preco {
+      padding-block: 100px;
+      background: var(--surface);
+      text-align: center;
+    }
+    .price-box {
+      max-width: 520px;
+      margin-inline: auto;
+      background: var(--bg);
+      border: 1px solid rgba(255,107,0,.25);
+      border-radius: 20px;
+      padding: 48px 40px;
+      margin-top: 60px;
+      position: relative;
+      overflow: hidden;
+    }
+    .price-box::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: var(--gradient);
+    }
+    .price-tag {
+      display: inline-block;
+      background: var(--gradient);
+      color: #fff;
+      font-size: .7rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      margin-bottom: 24px;
+    }
+    .price-original {
+      font-size: .9rem;
+      color: var(--muted);
+      text-decoration: line-through;
+      margin-bottom: 4px;
+    }
+    .price-main {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--text);
+    }
+    .price-main sup { font-size: 1.8rem; vertical-align: top; margin-top: .4em; color: var(--primary); }
+    .price-main .cents { font-size: 2rem; }
+    .price-installment { font-size: .82rem; color: var(--muted); margin-top: 4px; margin-bottom: 32px; }
+    .price-installment strong { color: var(--text); }
+
+    .price-includes {
+      text-align: left;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 32px;
+    }
+    .price-includes li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: .87rem;
+      color: var(--muted);
+    }
+    .price-includes li::before {
+      content: '✓';
+      width: 22px; height: 22px;
+      background: rgba(255,107,0,.15);
+      color: var(--primary);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .price-box .btn { width: 100%; justify-content: center; font-size: 1.1rem; padding: 18px; }
+
+    .price-note { font-size: .75rem; color: var(--muted); margin-top: 16px; }
+
+    /* ── FAQ ── */
+    #faq {
+      padding-block: 100px;
+    }
+    .faq-list {
+      max-width: 720px;
+      margin-inline: auto;
+      margin-top: 60px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 20px 24px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: .93rem;
+      transition: background .2s;
+      user-select: none;
+    }
+    .faq-question:hover { background: rgba(255,255,255,.02); }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: .7rem;
+      flex-shrink: 0;
+      transition: transform .3s;
+      color: var(--primary);
+    }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .35s ease, padding .35s;
+      padding-inline: 24px;
+      font-size: .87rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .faq-item.open .faq-answer { max-height: 300px; padding-block: 0 20px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+    /* ── Final CTA ── */
+    #final-cta {
+      padding-block: 120px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+    .final-cta-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 70% at 50% 50%, rgba(255,107,0,.1), transparent);
+    }
+    .final-cta-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .final-cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 680px;
+      margin-inline: auto;
+    }
+    .final-cta-content h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+    .final-cta-content p {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+
+    /* ── Footer ── */
+    footer {
+      background: var(--surface);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-block: 48px 32px;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+    .footer-brand p { font-size: .82rem; color: var(--muted); margin-top: 10px; max-width: 260px; line-height: 1.6; }
+    .footer-links h4 {
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .footer-links ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: .83rem; color: var(--muted); transition: color .2s; }
+    .footer-links a:hover { color: var(--primary); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-bottom p { font-size: .78rem; color: var(--muted); }
+
+    /* ── Scroll-reveal ── */
+    .reveal { opacity: 0; transform: translateY(30px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 40px; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .modules-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .result-highlight { grid-template-columns: 1fr; }
+      .audience-grid { grid-template-columns: 1fr; }
+      .bonus-grid { grid-template-columns: 1fr; }
+      .garantia-inner { grid-template-columns: 1fr; text-align: center; }
+      .garantia-badge { margin-inline: auto; }
+      .nav-links { display: none; }
+      .footer-top { flex-direction: column; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════ NAV ══ -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">✦</div>
+      ILUSÃO.IA
+    </a>
+    <ul class="nav-links">
+      <li><a href="#metodo">Método</a></li>
+      <li><a href="#resultados">Resultados</a></li>
+      <li><a href="#preco">Preço</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#preco" class="btn btn-primary nav-cta">Começar Agora</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════ TICKER ══ -->
+<div class="ticker-wrap" style="margin-top:72px;">
+  <div class="ticker-track">
+    <!-- doubled for seamless loop -->
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+    <div class="ticker-item">ILUSÃO.IA <span>✦</span></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ HERO ══ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-overlay"></div>
+  <div class="hero-glow"></div>
+
+  <div class="container">
+    <div class="hero-inner">
+
+      <div class="hero-content reveal">
+        <div class="pill">MÉTODO ILUSÃO.IA</div>
+
+        <h1 class="hero-headline">
+          Aprenda o Segredo Para<br>
+          Criar Conteúdo com IA<br>
+          <span class="line-highlight">Que Realmente Converte</span>
+        </h1>
+
+        <p class="hero-sub">
+          Conquiste sua <strong>liberdade financeira</strong> dominando as ferramentas de IA mais poderosas do mercado. Transforme conteúdo em <strong>vendas reais</strong> — sem precisar ser expert em tecnologia.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#preco" class="btn btn-primary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Quero Começar Agora
+          </a>
+          <a href="#metodo" class="btn btn-outline">Ver o Método</a>
+        </div>
+
+        <div class="hero-trust">
+          <div class="trust-avatars">
+            <span>👩</span>
+            <span>👨</span>
+            <span>👩</span>
+            <span>👨</span>
+            <span>+</span>
+          </div>
+          <span>+3.800 alunos já transformaram seus resultados</span>
+        </div>
+      </div>
+
+      <!-- Visual mockup -->
+      <div class="hero-visual">
+        <div class="hero-card-stack">
+
+          <div class="float-badge fb-1">
+            <div class="icon">🤖</div>
+            <div>
+              <div style="font-weight:700;font-size:.8rem;">IA Gerando Copy</div>
+              <div style="color:var(--muted);font-size:.7rem;">Em 30 segundos</div>
+            </div>
+          </div>
+
+          <div class="hero-card hero-card-back"></div>
+
+          <div class="hero-card hero-card-main">
+            <div class="card-icon-row">
+              <div style="font-size:.75rem;color:var(--muted);">Dashboard Ilusão.IA</div>
+              <div class="card-badge">AO VIVO</div>
+            </div>
+            <div class="card-metric">+482%</div>
+            <div class="card-metric-label">Crescimento em conversões este mês</div>
+
+            <div class="card-bar-wrap">
+              <div class="card-bar-label"><span>Alcance Orgânico</span><span>94%</span></div>
+              <div class="card-bar"><div class="card-bar-fill" style="width:94%"></div></div>
+            </div>
+            <div class="card-bar-wrap">
+              <div class="card-bar-label"><span>Taxa de Conversão</span><span>78%</span></div>
+              <div class="card-bar"><div class="card-bar-fill" style="width:78%"></div></div>
+            </div>
+            <div class="card-bar-wrap">
+              <div class="card-bar-label"><span>Engajamento</span><span>86%</span></div>
+              <div class="card-bar"><div class="card-bar-fill" style="width:86%"></div></div>
+            </div>
+          </div>
+
+          <div class="float-badge fb-2">
+            <div class="icon">💰</div>
+            <div>
+              <div style="font-weight:700;font-size:.8rem;">Venda Confirmada</div>
+              <div style="color:var(--muted);font-size:.7rem;">R$ 1.497,00</div>
+            </div>
+          </div>
+
+          <div class="float-badge fb-3">
+            <div class="icon">🚀</div>
+            <div>
+              <div style="font-weight:700;font-size:.8rem;">Conteúdo Publicado</div>
+              <div style="color:var(--muted);font-size:.7rem;">12K views em 2h</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ STATS BAR ══ -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <div class="stat-number">3.800+</div>
+        <div class="stat-label">Alunos Ativos</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-number">97%</div>
+        <div class="stat-label">Taxa de Satisfação</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-number">482%</div>
+        <div class="stat-label">Aumento Médio em Conversões</div>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item reveal">
+        <div class="stat-number">7 dias</div>
+        <div class="stat-label">Para Primeiros Resultados</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ ABOUT / PROBLEMA ══ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+
+      <div class="about-visual reveal">
+        <div class="about-box">
+          <div class="section-label">O Problema</div>
+          <ul class="pain-list">
+            <li class="pain-item">
+              <div class="pain-icon">⏰</div>
+              <div class="pain-text"><strong>Horas criando conteúdo</strong> que não gera vendas nem engajamento relevante.</div>
+            </li>
+            <li class="pain-item">
+              <div class="pain-icon">📉</div>
+              <div class="pain-text"><strong>Usando IA de forma genérica</strong> e recebendo textos sem personalidade ou estratégia.</div>
+            </li>
+            <li class="pain-item">
+              <div class="pain-icon">🔄</div>
+              <div class="pain-text"><strong>Ciclo sem fim de criar, postar, esperar</strong> — sem método e sem previsibilidade.</div>
+            </li>
+            <li class="pain-item">
+              <div class="pain-icon">💸</div>
+              <div class="pain-text"><strong>Investindo em ferramentas e cursos</strong> que prometem muito e entregam pouco.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="about-content reveal">
+        <div class="section-label">A Solução</div>
+        <h2>A IA Certa, do Jeito Certo, <span class="highlight">Para Vender</span></h2>
+        <p>
+          A maioria das pessoas usa IA como uma ferramenta de atalho — e por isso não consegue resultados. O <strong>Método Ilusão.IA</strong> é diferente: ele te ensina a usar a inteligência artificial como uma arma estratégica de vendas.
+        </p>
+        <p>
+          Não é sobre gerar texto rápido. É sobre criar conteúdo que <strong>conecta, convence e converte</strong> — de forma sistemática, repetível e escalável.
+        </p>
+        <p>
+          Desenvolvido por especialistas em marketing digital e IA, o método já ajudou mais de <strong>3.800 pessoas</strong> a construírem presença digital que gera renda real.
+        </p>
+        <div style="margin-top:32px;">
+          <a href="#preco" class="btn btn-primary">Quero Esse Método</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ MÉTODO ══ -->
+<section id="metodo">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Como Funciona</div>
+      <h2>O Método <span class="highlight">Ilusão.IA</span> em 3 Etapas</h2>
+      <p>Um sistema validado que transforma o poder da IA em resultados concretos para o seu negócio.</p>
+    </div>
+
+    <div class="steps-grid">
+      <div class="step-card reveal">
+        <div class="step-number">01</div>
+        <div class="step-icon">🧠</div>
+        <h3>Estratégia Inteligente</h3>
+        <p>Aprenda a mapear seu público, identificar as dores certas e criar a mensagem que ressoa. Sem estratégia, a IA é só barulho.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-number">02</div>
+        <div class="step-icon">⚡</div>
+        <h3>Criação Acelerada</h3>
+        <p>Domine os prompts e fluxos de trabalho que transformam sua estratégia em conteúdo de alta conversão em minutos, não horas.</p>
+      </div>
+      <div class="step-card reveal">
+        <div class="step-number">03</div>
+        <div class="step-icon">📈</div>
+        <h3>Escala Sistemática</h3>
+        <p>Monte sua máquina de conteúdo: publique com consistência, analise o que funciona e escale os resultados de forma previsível.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ CONTEÚDO ══ -->
+<section id="conteudo">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Grade do Curso</div>
+      <h2>O Que Você Vai <span class="highlight">Aprender</span></h2>
+      <p>Módulos práticos e diretos ao ponto, pensados para você implementar e ver resultados rapidamente.</p>
+    </div>
+
+    <div class="modules-grid">
+
+      <div class="module-card reveal">
+        <div class="module-num">01</div>
+        <div class="module-info">
+          <h3>Fundamentos da IA para Vendas</h3>
+          <p>Entenda como a IA funciona, quais ferramentas usar em cada situação e como configurar seu ambiente de trabalho para máxima produtividade.</p>
+        </div>
+      </div>
+
+      <div class="module-card reveal">
+        <div class="module-num">02</div>
+        <div class="module-info">
+          <h3>Engenharia de Prompts Avançada</h3>
+          <p>Aprenda a escrever prompts que entregam resultados profissionais. Técnicas de cadeia de pensamento, few-shot, e prompts de persona.</p>
+        </div>
+      </div>
+
+      <div class="module-card reveal">
+        <div class="module-num">03</div>
+        <div class="module-info">
+          <h3>Copywriting com IA</h3>
+          <p>Crie headlines irresistíveis, CTAs poderosos e textos de vendas que convertem — usando IA como seu co-redator estratégico.</p>
+        </div>
+      </div>
+
+      <div class="module-card reveal">
+        <div class="module-num">04</div>
+        <div class="module-info">
+          <h3>Conteúdo para Redes Sociais</h3>
+          <p>Estratégias específicas para Instagram, TikTok, YouTube e LinkedIn. Scripts, legendas e roteiros que geram alcance orgânico.</p>
+        </div>
+      </div>
+
+      <div class="module-card reveal">
+        <div class="module-num">05</div>
+        <div class="module-info">
+          <h3>Automação e Escala</h3>
+          <p>Monte fluxos automatizados de produção de conteúdo. Da ideia à publicação em escala, sem perder qualidade ou voz autêntica.</p>
+        </div>
+      </div>
+
+      <div class="module-card reveal">
+        <div class="module-num">06</div>
+        <div class="module-info">
+          <h3>Análise e Otimização</h3>
+          <p>Use IA para analisar seus dados, identificar o que converte e otimizar sua estratégia continuamente com base em resultados reais.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ RESULTADOS ══ -->
+<section id="resultados">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Prova Social</div>
+      <h2>Resultados de Quem Já <span class="highlight">Aplicou</span></h2>
+      <p>Esses são resultados reais de alunos do Método Ilusão.IA.</p>
+    </div>
+
+    <div class="testimonials-grid">
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Em 3 semanas usando o método, minha taxa de conversão no Instagram saltou de 1,2% para 8,7%. A forma como o método ensina a usar os prompts é revolucionária. Nunca imaginei que IA poderia ser tão estratégica."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩</div>
+          <div>
+            <div class="testi-name">Camila Rodrigues</div>
+            <div class="testi-role">Coach de Emagrecimento · São Paulo</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Eu estava gastando 6 horas por dia criando conteúdo e não vendia nada. Com o Método Ilusão.IA reduzi para 1h e tripliquei minhas vendas no primeiro mês. O módulo de copywriting com IA mudou tudo."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👨</div>
+          <div>
+            <div class="testi-name">Rafael Mendes</div>
+            <div class="testi-role">Consultor Digital · Rio de Janeiro</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-text">"Achei que não servia para mim porque não entendo de tecnologia. Mas o método é tão didático que em 7 dias já estava gerando conteúdo que as pessoas compartilhavam. Primeiro mês faturei R$ 4.200."</p>
+        <div class="testi-author">
+          <div class="testi-avatar">👩</div>
+          <div>
+            <div class="testi-name">Ana Paula Silva</div>
+            <div class="testi-role">Artesã e Empreendedora · Belo Horizonte</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="result-highlight">
+      <div class="result-box reveal">
+        <div class="num">3× a 8×</div>
+        <div class="desc">Aumento nas vendas no 1º mês</div>
+      </div>
+      <div class="result-box reveal">
+        <div class="num">-70%</div>
+        <div class="desc">Redução no tempo de criação de conteúdo</div>
+      </div>
+      <div class="result-box reveal">
+        <div class="num">7 dias</div>
+        <div class="desc">Para os primeiros resultados concretos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ PARA QUEM ══ -->
+<section id="para-quem">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Público Ideal</div>
+      <h2>Para Quem é o <span class="highlight">Método?</span></h2>
+      <p>O Método Ilusão.IA foi criado para quem quer resultados reais com conteúdo digital.</p>
+    </div>
+
+    <div class="audience-grid">
+      <div class="audience-card reveal">
+        <div class="audience-icon">🛒</div>
+        <div class="audience-info">
+          <h3>Empreendedores Digitais</h3>
+          <p>Que querem escalar suas vendas online usando conteúdo estratégico e IA para multiplicar o alcance sem aumentar custos.</p>
+        </div>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon">📱</div>
+        <div class="audience-info">
+          <h3>Criadores de Conteúdo</h3>
+          <p>Que querem crescer suas audiências com consistência, qualidade e monetização — sem burnout criativo.</p>
+        </div>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon">🏢</div>
+        <div class="audience-info">
+          <h3>Gestores de Marketing</h3>
+          <p>Que precisam produzir mais conteúdo de qualidade com menos equipe e orçamento, usando IA como alavanca estratégica.</p>
+        </div>
+      </div>
+      <div class="audience-card reveal">
+        <div class="audience-icon">💼</div>
+        <div class="audience-info">
+          <h3>Profissionais Liberais</h3>
+          <p>Médicos, advogados, coaches, consultores — que querem construir autoridade digital e atrair clientes qualificados.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ BÔNUS ══ -->
+<section id="bonus">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Bônus Exclusivos</div>
+      <h2>Mais do Que um Curso — <span class="highlight">Um Ecossistema</span></h2>
+      <p>Além do método completo, você recebe bônus que valem mais do que o valor do investimento.</p>
+    </div>
+
+    <div class="bonus-grid">
+      <div class="bonus-card reveal">
+        <div class="bonus-label">Bônus 01</div>
+        <div class="bonus-icon">📋</div>
+        <h3>Biblioteca de Prompts</h3>
+        <p>+200 prompts prontos e testados para cada tipo de conteúdo: posts, reels, e-mails, páginas de vendas e muito mais.</p>
+        <div class="bonus-value">Valor: <del>R$ 297</del> → <strong>GRÁTIS</strong></div>
+      </div>
+      <div class="bonus-card reveal">
+        <div class="bonus-label">Bônus 02</div>
+        <div class="bonus-icon">🔥</div>
+        <h3>Templates de Conteúdo Viral</h3>
+        <p>50 estruturas de conteúdo comprovadas que geram alto engajamento. Adapte em minutos para seu nicho e público.</p>
+        <div class="bonus-value">Valor: <del>R$ 197</del> → <strong>GRÁTIS</strong></div>
+      </div>
+      <div class="bonus-card reveal">
+        <div class="bonus-label">Bônus 03</div>
+        <div class="bonus-icon">👥</div>
+        <h3>Comunidade VIP</h3>
+        <p>Acesso vitalício à comunidade exclusiva de alunos com suporte dos mentores, feedback de conteúdo e networkding.</p>
+        <div class="bonus-value">Valor: <del>R$ 497</del> → <strong>GRÁTIS</strong></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ GARANTIA ══ -->
+<section id="garantia">
+  <div class="container">
+    <div class="garantia-inner">
+      <div class="garantia-badge reveal">
+        <div class="garantia-days">7</div>
+        <span>Dias de<br>Garantia<br>Total</span>
+      </div>
+      <div class="garantia-content reveal">
+        <div class="section-label">Sem Risco</div>
+        <h2>Teste Sem Medo. <span class="highlight">Sua Satisfação é Garantida.</span></h2>
+        <p>
+          Tenho tanta confiança no Método Ilusão.IA que ofereço <strong>7 dias de garantia incondicional</strong>. Se por qualquer motivo você não ficar satisfeito com o conteúdo, basta enviar um e-mail e devolvemos 100% do seu dinheiro.
+        </p>
+        <p>
+          Sem perguntas, sem burocracia, sem risco para você. Você tem <strong>7 dias para testar, explorar e ver os primeiros resultados</strong>. Se não gostar, não paga.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ PREÇO ══ -->
+<section id="preco">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Investimento</div>
+      <h2>Comece a Criar Conteúdo que <span class="highlight">Vende Hoje</span></h2>
+      <p>Acesso completo ao Método Ilusão.IA com todos os bônus por um valor que cabe no seu bolso.</p>
+    </div>
+
+    <div class="price-box reveal">
+      <div class="price-tag">⚡ Oferta por Tempo Limitado</div>
+      <div class="price-original">De R$ 997,00</div>
+      <div class="price-main">
+        <sup>R$</sup>297<span class="cents">,00</span>
+      </div>
+      <div class="price-installment">ou <strong>12× de R$ 29,70</strong> no cartão</div>
+
+      <ul class="price-includes">
+        <li>Método Ilusão.IA completo (6 módulos)</li>
+        <li>Aulas em vídeo HD + material de apoio</li>
+        <li>Biblioteca com +200 prompts validados</li>
+        <li>50 templates de conteúdo viral</li>
+        <li>Comunidade VIP vitalícia</li>
+        <li>Atualizações gratuitas para sempre</li>
+        <li>7 dias de garantia incondicional</li>
+      </ul>
+
+      <a href="#" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        GARANTIR MINHA VAGA AGORA
+      </a>
+      <p class="price-note">🔒 Compra 100% segura · Pagamento processado via Hotmart · 7 dias de garantia</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ FAQ ══ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-label">Perguntas Frequentes</div>
+      <h2>Suas Dúvidas <span class="highlight">Respondidas</span></h2>
+    </div>
+
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Preciso ter experiência com IA ou tecnologia?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          Não! O Método Ilusão.IA foi desenvolvido para funcionar do zero. Você aprende tudo do começo — desde o que são as ferramentas até como usá-las estrategicamente para vender. Não é necessário nenhum conhecimento técnico prévio.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Em quanto tempo terei resultados?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          A maioria dos alunos começa a ver engajamento diferente em 7 dias e resultados concretos em vendas entre 2 e 4 semanas. Claro que depende do esforço que você dedicar, mas o método é projetado para resultados rápidos e práticos.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>O método funciona para qualquer nicho?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          Sim! Os princípios de estratégia, copywriting com IA e criação de conteúdo que converte são universais. O método já foi aplicado com sucesso em saúde, finanças, moda, gastronomia, educação, serviços locais e muito mais.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Por quanto tempo tenho acesso ao conteúdo?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          Você tem acesso vitalício a todo o conteúdo, incluindo futuras atualizações. Uma vez que você entrar, é para sempre. E como a IA evolui constantemente, o método também é atualizado regularmente sem custo adicional.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>E se eu não gostar? Como funciona a garantia?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          Você tem 7 dias corridos a partir da compra para testar tudo. Se por qualquer motivo não ficar satisfeito, basta enviar um e-mail para suporte@ilusao.ia e devolveremos 100% do valor pago, sem perguntas e sem burocracia.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          <span>Quais ferramentas de IA são ensinadas no método?</span>
+          <div class="faq-icon">+</div>
+        </div>
+        <div class="faq-answer">
+          O método cobre as principais ferramentas do mercado: ChatGPT, Claude, Gemini, Midjourney, Leonardo AI, Canva IA e outras. Mas mais importante que as ferramentas, você aprende o raciocínio estratégico que funciona em qualquer plataforma.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ FINAL CTA ══ -->
+<section id="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-grid"></div>
+  <div class="container">
+    <div class="final-cta-content reveal">
+      <div class="pill" style="margin-bottom:24px;">A Decisão é Agora</div>
+      <h2>Chega de Criar Conteúdo que <span class="highlight">Não Vende</span></h2>
+      <p>
+        Cada dia que passa sem o Método Ilusão.IA é um dia de potencial desperdiçado. Seus concorrentes já estão usando IA estrategicamente. A pergunta não é se você vai aprender — é se vai aprender antes ou depois deles.
+      </p>
+      <a href="#preco" class="btn btn-primary" style="font-size:1.1rem;padding:20px 44px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        Começar Agora por R$ 297
+      </a>
+      <p style="margin-top:16px;font-size:.8rem;color:var(--muted);">🔒 7 dias de garantia · Acesso imediato · Vitalício</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════ FOOTER ══ -->
+<footer>
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <div class="logo-icon">✦</div>
+          ILUSÃO.IA
+        </a>
+        <p>Inteligência Artificial que Vende. Transforme conteúdo em resultados reais para o seu negócio.</p>
+      </div>
+
+      <div class="footer-links">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#metodo">O Método</a></li>
+          <li><a href="#conteudo">Conteúdo</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#bonus">Bônus</a></li>
+          <li><a href="#preco">Preço</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links">
+        <h4>Suporte</h4>
+        <ul>
+          <li><a href="#">Central de Ajuda</a></li>
+          <li><a href="#">Contato</a></li>
+          <li><a href="#">Política de Privacidade</a></li>
+          <li><a href="#">Termos de Uso</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Ilusão.IA — Todos os direitos reservados.</p>
+      <p>Este produto é distribuído pela Hotmart. Os resultados apresentados são individuais e podem variar.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════ JS ══ -->
+<script>
+  /* Sticky nav */
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  /* Scroll reveal */
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => observer.observe(el));
+
+  /* FAQ accordion */
+  document.querySelectorAll('.faq-question').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+</script>
+</body>
+</html>
